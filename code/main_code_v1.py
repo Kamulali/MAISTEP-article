@@ -62,7 +62,7 @@ def objective(trial, model_name, X_train, y_train):
     return rmse
 
 # Load and preprocess the dataset / path to the training data
-file_path = '/home/kamju/MAISTEP-article/data/MAISTEP_uniform_sampled_grid_file.txt'
+file_path = '/home/kamju/MAISTEP-article/data/MESA_uniform_sampled_grid_file.txt'
 dataset   = load_dataset(file_path)
 
 # Specify transformations if needed, and apply them
