@@ -31,8 +31,8 @@ This project involves training various machine learning algorithms on stellar mo
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/Kamulali/MAISTEP.git
-    cd MAISTEP
+    git clone https://github.com/Kamulali/MAISTEP-article.git
+    cd MAISTEP-article
     ```
 
 2. Create a virtual environment and activate it:
@@ -47,6 +47,10 @@ This project involves training various machine learning algorithms on stellar mo
     ```
 
 ## Usage
+   ```bash
+   cd MAISTEP-article/code
+   python3 main_code_v1.py
+   ```
 
 1. **Loading and Preprocessing the Data**:
    The `load_dataset()` and `preprocess_transformations()` functions are used to load the data from a file and apply necessary transformations.
@@ -59,9 +63,9 @@ This project involves training various machine learning algorithms on stellar mo
     dataset = load_dataset(file_path)
     transformed_data = preprocess_transformations(dataset, apply_function)
     ```
-## Data Format
+## Input Data Formats
 
-### Input Data File
+### Training Data File
 The stellar grid for training the ML algorithms should be in a tab-separated `.csv` format. It includes both **features** (independent variables) and **target labels** (dependent variables).
 
 - **Training Features**:
@@ -73,13 +77,15 @@ The stellar grid for training the ML algorithms should be in a tab-separated `.c
   - `mass`: (Msolar)
   - `radius`: (Rsolar)
   - `age`: (Gyr)
-
-#### Sample format for input data:
-##### Teff    [Fe/H]    L     mass   radius   age
-##### 5777    0.0       1.0   1.0    1.0      4.6
+See an example format in /data/APOKASC_constraints_Baye_2019.csv 
 
 ### Observation Data File
-The observation data file must include object names (col_1) and corresponding observed values (col_2,col_4,col_6,...) and uncertainties (col_3,col_5,col_7,...) for the features (`Teff`, `[Fe/H]`, `L`). It should also be a tab-separated file.
+The observation data file must include object names (col_1) and corresponding observed values (col_2,col_4,col_6,...) and uncertainties (col_3,col_5,col_7,...) for the features (`Teff`, `[Fe/H]`, `L`). And should be tab-separated.
+
+#### Sample format for observation data:
+##### Object Name    Teff    Teff_error    [Fe/H]    [Fe/H]_error    L    L_error
+##### Sun            5777    50            0.0       0.1           1.0  0.05
+
 
 2. **Training the Models**:
    Train models for each target (mass, radius, age) using the `train_base_models()` function.
@@ -96,10 +102,6 @@ The observation data file must include object names (col_1) and corresponding ob
     ```python
     predict_noisy_data(base_models_dict, meta_model_coefficients_dict, noisy_data_dfs, scaler, obj_names)
     ```
-#### Sample format for observation data:
-##### Object Name    Teff    Teff_error    [Fe/H]    [Fe/H]_error    L    L_error
-##### Sun            5777    50            0.0       0.1           1.0  0.05
-
 4. **Results Visualization**:
    Save and visualize results using histograms for predicted parameters.
 
