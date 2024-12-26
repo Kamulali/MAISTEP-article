@@ -1,4 +1,4 @@
-![logo](black_bkg_logo.png)
+![logo](logos/black_bkg_logo.png)
 
 This repository contains code for characterizing stars, with specific focus on parameters like radius, mass, and age using a stacking-like ML approach 
 
