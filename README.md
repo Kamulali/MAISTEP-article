@@ -118,18 +118,18 @@ The observation data file must include object names (col_1) and corresponding ob
 ## Model Training
 
 - The project supports multiple machine learning models (Extra Trees, XGBoost, etc.) trained with 10-fold cross-validation.
-- Predictions from multiple models are stacked using non-negative least squares (NNLS) to provide a final prediction.
+- Predictions from multiple models are combined using non-negative least squares (NNLS) to provide a final prediction.
 
 ## Prediction
 
-- Predictions are made using base models and combined with meta-model coefficients.
-- Supports generating noisy synthetic data from real observations to provide uncertainty estimates.
+- Predictions are generated using base models and combined through weighting.
+- Supports creating random noise data from  observations' standard deviations, subsequently providing errors on each target parameter.
 
 ## Results
 
 - Predicted results are stored as `.txt` files for each object.
 - Summary statistics (median, upper and lower bounds) are calculated for mass, radius, and age.
-- Visualizations are created for the distribution of results.
+- Histograms are produced for visualisation.
 
 ### Output Data
 
